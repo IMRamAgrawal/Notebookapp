@@ -1,5 +1,10 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const dotenv = require('dotenv');
+const path = require("path");
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
-mongoose.connect("mongodb://127.0.0.1:27017/Harry2")
-.then(()=> {console.log("connection successfull...")})
-.catch((err)=> {console.log(err)});
+const DB = process.env.DATABASE;
+
+mongoose.connect(DB)
+  .then(() => { console.log("connection successful...") })
+  .catch((err) => { console.log(err) });
